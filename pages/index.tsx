@@ -1,3 +1,10 @@
+import { Intro } from '@/components/Intro';
+
 export default function Home() {
-  return <h1 className="underline">Hello there</h1>;
+  return (
+    <div className="my-auto">
+      <h1>Hi, I&apos;m Jordan</h1>
+      <Intro />
+    </div>
+  );
 }

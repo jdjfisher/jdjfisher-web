@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+  font-size: 3em;
+  font-style: bold;
+  font-weight: 700;
+}
+
+@import './animations.css';

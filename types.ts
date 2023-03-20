@@ -1,4 +1,6 @@
 import { z } from 'zod';
-import { blogPostValidator } from './lib/cms/validators';
+import { blogPostValidator, imageFileValidator } from './lib/cms/validators';
 
 export type BlogPost = z.infer<typeof blogPostValidator>;
+
+export type ImageFile = z.infer<typeof imageFileValidator>;
