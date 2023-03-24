@@ -1,10 +1,17 @@
 import { z } from 'zod';
 
+export const richTextValidator = z.object({
+  nodeType: z.literal('document'),
+  content: z.array(z.any()),
+  data: z.record(z.string(), z.any()),
+});
+
 export const blogPostValidator = z.object({
   fields: z.object({
     title: z.string(),
     slug: z.string(),
     description: z.string(),
+    content: richTextValidator,
   }),
 });
 

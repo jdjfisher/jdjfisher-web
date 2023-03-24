@@ -1,3 +1,4 @@
+import RichText from '@/components/RichText';
 import { getBlogPost, getBlogPosts } from '@/lib/cms/bindings';
 import { BlogPost } from '@/types';
 import { GetStaticProps } from 'next';
@@ -33,8 +34,8 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
 export default function Post({ post }: Props) {
   return (
-    <div className="space-y-5">
-      <div className="flex justify-between">
+    <div className="w-full space-y-5">
+      <div className="flex justify-between ">
         <h1>{post.fields.title}</h1>
 
         <Link href="/blog" className="self-end text-gray-500">
@@ -42,11 +43,8 @@ export default function Post({ post }: Props) {
         </Link>
       </div>
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis nesciunt eveniet obcaecati
-        nemo reprehenderit commodi earum molestias, vitae quod sapiente ex explicabo praesentium
-        perferendis ipsa debitis. Sequi, officiis facilis. Minus?
-      </p>
+      {/* @ts-ignore */}
+      <RichText text={post.fields.content} />
     </div>
   );
 }
