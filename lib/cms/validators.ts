@@ -12,6 +12,8 @@ export const blogPostValidator = z.object({
     slug: z.string(),
     description: z.string(),
     content: richTextValidator,
+    postedAt: z.coerce.date().transform((d) => d.toISOString()),
+    updatedAt: z.coerce.date().transform((d) => d.toISOString()),
   }),
 });
 
