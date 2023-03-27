@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="My website." key="desc" />
       </Head>
 
-      <div className="mx-auto flex min-h-screen w-[50vw] flex-col gap-8">
+      <div className="mx-auto flex min-h-screen max-w-4xl flex-col gap-8 px-8">
         <Header />
 
         <main className="flex flex-1">

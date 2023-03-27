@@ -8,4 +8,8 @@ h1 {
   font-weight: 700;
 }
 
+p {
+  text-align: justify
+}
+
 @import './animations.css';
