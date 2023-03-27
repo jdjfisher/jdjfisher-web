@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       transitionProperty: {
-        'top': 'top',
-      }
+        top: 'top',
+      },
     },
   },
   plugins: [],
