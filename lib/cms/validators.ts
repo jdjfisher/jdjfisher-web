@@ -6,6 +6,14 @@ export const richTextValidator = z.object({
   data: z.record(z.string(), z.any()),
 });
 
+export const projectValidator = z.object({
+  fields: z.object({
+    title: z.string(),
+    repositoryUrl: z.string().optional(),
+    content: richTextValidator,
+  }),
+});
+
 export const blogPostValidator = z.object({
   fields: z.object({
     title: z.string(),

@@ -3,9 +3,15 @@
 @tailwind utilities;
 
 h1 {
-  font-size: 3em;
+  font-size: 36pt;
   font-style: bold;
   font-weight: 700;
+}
+
+h2 { 
+  font-size: 20pt;
+  font-style: bold;
+  font-weight: 600;
 }
 
 p {
