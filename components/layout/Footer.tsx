@@ -15,8 +15,12 @@ export default function Footer() {
       </button>
 
       <div className="space-x-8">
-        <ProfileLink href="https://www.linkedin.com/in/jordan-fisher-2789b91a4/" text="Li" />
-        <ProfileLink href="https://github.com/jdjfisher" text="Gh" />
+        <ProfileLink
+          href="https://www.linkedin.com/in/jordan-fisher-2789b91a4/"
+          short="in"
+          full="LinkedIn"
+        />
+        <ProfileLink href="https://github.com/jdjfisher" short="gh" full="GitHub" />
       </div>
     </footer>
   );
