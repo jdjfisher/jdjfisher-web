@@ -23,6 +23,8 @@ interface Props {
   text: Document;
 }
 
-const RichText = ({ text }: Props) => <div>{documentToReactComponents(text, options)}</div>;
+const RichText = ({ text }: Props) => (
+  <div className="space-y-4">{documentToReactComponents(text, options)}</div>
+);
 
 export default RichText;

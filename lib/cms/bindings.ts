@@ -1,6 +1,12 @@
 import { z } from 'zod';
 import { cmsClient } from './client';
-import { blogPostValidator, imageFileValidator, projectValidator } from './validators';
+import {
+  wordsValidator,
+  blogPostValidator,
+  imageFileValidator,
+  projectValidator,
+} from './validators';
+import { Document } from '@contentful/rich-text-types';
 
 export const getBlogPosts = async () => {
   const response = await cmsClient.getEntries({ content_type: 'blogPost' });
@@ -27,4 +33,14 @@ export const getImageAsset = async (id: string) => {
   const asset = await cmsClient.getAsset(id);
 
   return imageFileValidator.parse(asset.fields.file);
+};
+
+export const getWords = async (slug: string): Promise<Document> => {
+  const response = await cmsClient.getEntries({
+    'content_type': 'words',
+    'fields.slug': slug,
+  });
+
+  // @ts-ignore
+  return z.array(wordsValidator).length(1).parse(response.items)[0].fields.content;
 };

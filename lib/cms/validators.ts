@@ -14,6 +14,12 @@ export const projectValidator = z.object({
   }),
 });
 
+export const wordsValidator = z.object({
+  fields: z.object({
+    content: richTextValidator,
+  }),
+});
+
 export const blogPostValidator = z.object({
   fields: z.object({
     title: z.string(),
