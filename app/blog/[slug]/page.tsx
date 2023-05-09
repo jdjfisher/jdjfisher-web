@@ -21,7 +21,7 @@ export default async function Post({ params }: any) {
 
   return (
     <div className="w-full space-y-5">
-      <div className="flex items-center justify-between">
+      <div className="items-center justify-between sm:flex">
         <h1>{post.fields.title}</h1>
 
         <div className="whitespace-nowrap">

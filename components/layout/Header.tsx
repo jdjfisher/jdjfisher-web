@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <header className="relative py-5">
-      <nav className="flex gap-8">
+      <nav className="flex justify-between gap-8 sm:justify-start">
         {Object.entries(links).map(([link, label]) => (
           <Link
             href={link}

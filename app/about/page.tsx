@@ -12,7 +12,7 @@ export default async function About() {
     <div className="space-y-5">
       <h1>About</h1>
 
-      <div className="float-right pl-8 pb-8">
+      <div className="float-right hidden pl-8 pb-8 sm:block">
         <Image
           src={`https:${avatar.url}`}
           alt="Me"

@@ -19,12 +19,14 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body className="mx-auto flex min-h-screen max-w-4xl flex-col gap-8 px-8">
-        <Header />
+      <body>
+        <div className="mx-auto flex min-h-screen max-w-4xl flex-col gap-8 overflow-x-hidden px-8">
+          <Header />
 
-        <main className="flex flex-1">{children}</main>
+          <main className="flex flex-1">{children}</main>
 
-        <Footer />
+          <Footer />
+        </div>
       </body>
     </html>
   );
