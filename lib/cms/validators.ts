@@ -10,6 +10,7 @@ export const projectValidator = z.object({
   fields: z.object({
     title: z.string(),
     repositoryUrl: z.string().optional(),
+    status: z.enum(['closed', 'paused', 'prototyping']),
     content: richTextValidator,
   }),
 });
