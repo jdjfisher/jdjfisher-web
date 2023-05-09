@@ -1,27 +1,13 @@
 import RichText from '@/components/RichText';
 import { getImageAsset, getWords } from '@/lib/cms/bindings';
-import { ImageFile } from '@/types';
-import { Document } from '@contentful/rich-text-types';
-import { GetStaticProps } from 'next';
 import Image from 'next/image';
 
-interface Props {
-  avatar: ImageFile;
-  text: Document;
-}
-
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export default async function About() {
   const [avatar, text] = await Promise.all([
     getImageAsset('7opaxdbYq6u2RnNBPpu8k6'),
     getWords('about-page'),
   ]);
 
-  return {
-    props: { avatar, text },
-  };
-};
-
-export default function About({ avatar, text }: Props) {
   return (
     <div className="space-y-5">
       <h1>About</h1>

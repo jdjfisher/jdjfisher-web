@@ -1,39 +1,24 @@
 import RichText from '@/components/RichText';
 import { getBlogPost, getBlogPosts } from '@/lib/cms/bindings';
-import { BlogPost } from '@/types';
 import dayjs from 'dayjs';
-import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { z } from 'zod';
 
-interface Props {
-  post: BlogPost;
-}
+export const dynamicParams = false;
 
-export async function getStaticPaths() {
+export async function generateStaticParams() {
   const posts = await getBlogPosts();
 
-  return {
-    paths: posts.map((post) => ({
-      params: {
-        slug: post.fields.slug,
-      },
-    })),
-    fallback: false,
-  };
+  return posts.map((post) => ({
+    slug: post.fields.slug,
+  }));
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const slug = z.string().parse(context.params?.slug);
+export default async function Post({ params }: any) {
+  const slug = z.string().parse(params?.slug);
 
   const post = await getBlogPost(slug);
 
-  return {
-    props: { post },
-  };
-};
-
-export default function Post({ post }: Props) {
   return (
     <div className="w-full space-y-5">
       <div className="flex items-center justify-between">

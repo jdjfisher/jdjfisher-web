@@ -1,3 +1,5 @@
+'use client';
+
 import { ProfileLink } from '../ProfileLink';
 
 function scrollToTop() {

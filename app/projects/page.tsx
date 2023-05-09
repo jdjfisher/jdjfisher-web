@@ -1,21 +1,9 @@
 import ProjectOverview from '@/components/projects/ProjectOverview';
 import { getProjects } from '@/lib/cms/bindings';
-import { Project } from '@/types';
-import { GetStaticProps } from 'next';
 
-interface Props {
-  projects: Project[];
-}
-
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export default async function Projects() {
   const projects = await getProjects();
 
-  return {
-    props: { projects },
-  };
-};
-
-export default function Projects({ projects }: Props) {
   return (
     <div className="space-y-5">
       <h1>Projects</h1>
