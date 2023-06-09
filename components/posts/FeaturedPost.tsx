@@ -1,16 +1,16 @@
-import { BlogPost } from '@/types';
+import { Post } from '@/types';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import Row from '../layout/Row';
 
 interface Props {
-  post: BlogPost;
+  post: Post;
 }
 
-export default function FeaturedBlogPost({ post }: Props) {
+export default function FeaturedPost({ post }: Props) {
   return (
     <Row>
-      <Link href={`/blog/${post.fields.slug}`}>
+      <Link href={`/posts/${post.fields.slug}`}>
         <span className="text-sm text-gray-500">
           {dayjs(post.fields.postedAt).format('MMMM Do, YYYY')}
         </span>

@@ -21,7 +21,7 @@ export const wordsValidator = z.object({
   }),
 });
 
-export const blogPostValidator = z.object({
+export const postValidator = z.object({
   fields: z.object({
     title: z.string(),
     slug: z.string(),
