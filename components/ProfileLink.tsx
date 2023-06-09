@@ -7,7 +7,11 @@ interface Props {
 export const ProfileLink = ({ href, short, full }: Props) => {
   return (
     <code className="relative">
-      <a href={href} className="group peer relative hover:drop-shadow-2xl" aria-label={full}>
+      <a
+        href={href}
+        className="group peer relative hover:drop-shadow-2xl hover:text-black transition"
+        aria-label={full}
+      >
         {'<'}
         {short}
         {' />'}
