@@ -10,7 +10,7 @@ export default async function Projects() {
 
       <p>I&apos;ll finish one someday</p>
 
-      <div className="space-y-8">
+      <div className="space-y-10">
         {projects.map((project) => (
           <ProjectOverview project={project} key={project.fields.title} />
         ))}
