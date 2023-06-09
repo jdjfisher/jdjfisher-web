@@ -5,6 +5,7 @@ interface Props {
 }
 
 const statusColours: Record<Project['fields']['status'], string> = {
+  active: '#99b88c',
   closed: '#ddd',
   paused: '#aaa',
   prototyping: '#bbb',
