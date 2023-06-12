@@ -9,16 +9,16 @@ interface Props {
 
 export default function ProjectOverview({ project }: Props) {
   return (
-    <RowLink href={`/projects/${project.fields.title}`}>
+    <RowLink href={`/projects/${project.title}`}>
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2>{project.fields.title}</h2>
+          <h2>{project.title}</h2>
 
           <ProjectStatus project={project} />
         </div>
 
         {/* @ts-ignore */}
-        <RichText text={project.fields.content} />
+        <RichText text={project.content} />
       </div>
     </RowLink>
   );

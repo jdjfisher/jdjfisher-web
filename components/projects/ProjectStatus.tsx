@@ -4,7 +4,7 @@ interface Props {
   project: Project;
 }
 
-const statusColours: Record<Project['fields']['status'], string> = {
+const statusColours: Record<Project['status'], string> = {
   active: '#99b88c',
   closed: '#ddd',
   paused: '#aaa',
@@ -15,9 +15,9 @@ export default function ProjectStatus({ project }: Props) {
   return (
     <code
       className="select-none rounded-full px-3 py-1 text-xs shadow-inner"
-      style={{ backgroundColor: statusColours[project.fields.status] }}
+      style={{ backgroundColor: statusColours[project.status] }}
     >
-      {project.fields.status}
+      {project.status}
     </code>
   );
 }

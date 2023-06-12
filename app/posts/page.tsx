@@ -12,7 +12,7 @@ export default async function Post() {
 
       <div className="space-y-10">
         {featured.map((post) => (
-          <FeaturedPost post={post} key={post.fields.title} />
+          <FeaturedPost post={post} key={post.title} />
         ))}
       </div>
     </div>

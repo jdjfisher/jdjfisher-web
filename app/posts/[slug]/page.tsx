@@ -10,7 +10,7 @@ export async function generateStaticParams() {
   const posts = await getPosts();
 
   return posts.map((post) => ({
-    slug: post.fields.slug,
+    slug: post.slug,
   }));
 }
 
@@ -22,11 +22,9 @@ export default async function Post({ params }: any) {
   return (
     <div className="w-full space-y-5">
       <div className="items-center justify-between sm:flex">
-        <h1>{post.fields.title}</h1>
+        <h1>{post.title}</h1>
 
-        <div className="whitespace-nowrap">
-          {dayjs(post.fields.updatedAt).format('MMMM Do, YYYY')}
-        </div>
+        <div className="whitespace-nowrap">{dayjs(post.updatedAt).format('MMMM Do, YYYY')}</div>
       </div>
 
       <div className="flex justify-items-end">
@@ -36,7 +34,7 @@ export default async function Post({ params }: any) {
       </div>
 
       {/* @ts-ignore */}
-      <RichText text={post.fields.content} />
+      <RichText text={post.content} />
     </div>
   );
 }

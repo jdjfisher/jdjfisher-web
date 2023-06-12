@@ -12,7 +12,7 @@ export default async function Projects() {
 
       <div className="space-y-10">
         {projects.map((project) => (
-          <ProjectOverview project={project} key={project.fields.title} />
+          <ProjectOverview project={project} key={project.title} />
         ))}
       </div>
     </div>

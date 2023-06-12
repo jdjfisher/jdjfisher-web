@@ -46,5 +46,5 @@ export const getWords = async (slug: string): Promise<Document> => {
   });
 
   // @ts-ignore
-  return z.array(wordsValidator).length(1).parse(response.items)[0].fields.content;
+  return z.array(wordsValidator).length(1).parse(response.items)[0].content;
 };

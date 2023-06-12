@@ -15,7 +15,7 @@ export async function generateStaticParams() {
   const projects = await getProjects();
 
   return projects.map((post) => ({
-    title: post.fields.title,
+    title: post.title,
   }));
 }
 
@@ -27,15 +27,15 @@ export default async function Projec({ params }: Props) {
   return (
     <div className="w-full space-y-10">
       <div className="items-center justify-between sm:flex">
-        <h1>{project.fields.title}</h1>
+        <h1>{project.title}</h1>
 
         <div className="flex justify-items-end gap-4">
           <Link href="/projects" className="text-gray-500">
             {'<-'} back
           </Link>
 
-          {project.fields.repositoryUrl && (
-            <a href={project.fields.repositoryUrl}>
+          {project.repositoryUrl && (
+            <a href={project.repositoryUrl}>
               <FaGithub size={24} />
             </a>
           )}
