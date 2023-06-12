@@ -8,7 +8,7 @@ function scrollToTop() {
 
 export default function Footer() {
   return (
-    <footer className="flex justify-between border-t py-6 md:border-t-0 text-gray-400 text-sm group">
+    <footer className="group grid grid-cols-3 border-t py-6 text-sm text-gray-400 md:border-t-0">
       <div className="space-x-8">
         <ProfileLink
           href="https://www.linkedin.com/in/jordan-fisher-2789b91a4/"
@@ -18,15 +18,17 @@ export default function Footer() {
         <ProfileLink href="https://github.com/jdjfisher" short="gh" full="GitHub" />
       </div>
 
-      <button
-        type="button"
-        onClick={scrollToTop}
-        className="hidden -translate-y-2 opacity-0  transition group-hover:translate-y-0 group-hover:opacity-100 sm:block text-orange-500 font-extrabold hover:drop-shadow-2xl"
-      >
-        ^
-      </button>
+      <div>
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="-translate-y-2py-1 mx-auto hidden px-3 font-bold text-orange-500 opacity-0 transition hover:drop-shadow-2xl group-hover:translate-y-0 group-hover:opacity-100 sm:block"
+        >
+          ^
+        </button>
+      </div>
 
-      <span>Jordan Fisher © 2023</span>
+      <span className="text-right">Jordan Fisher © 2023</span>
     </footer>
   );
 }
