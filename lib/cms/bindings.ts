@@ -24,6 +24,15 @@ export const getProjects = async () => {
   return z.array(projectValidator).parse(response.items);
 };
 
+export const getProject = async (title: string) => {
+  const response = await cmsClient.getEntries({
+    'content_type': 'project',
+    'fields.title': title,
+  });
+
+  return z.array(projectValidator).length(1).parse(response.items)[0];
+};
+
 export const getImageAsset = async (id: string) => {
   const asset = await cmsClient.getAsset(id);
 
