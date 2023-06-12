@@ -6,6 +6,16 @@ export const richTextValidator = z.object({
   data: z.record(z.string(), z.any()),
 });
 
+export const collaboratorValidator = z
+  .object({
+    fields: z.object({
+      handle: z.string(),
+      referenceUrl: z.string().url(),
+      imageUrl: z.string().url(),
+    }),
+  })
+  .transform((f) => f.fields);
+
 export const projectValidator = z
   .object({
     fields: z.object({
@@ -13,6 +23,7 @@ export const projectValidator = z
       repositoryUrl: z.string().optional(),
       status: z.enum(['closed', 'paused', 'prototyping', 'active']),
       content: richTextValidator,
+      collaborators: z.array(collaboratorValidator).optional(),
     }),
   })
   .transform((o) => o.fields);

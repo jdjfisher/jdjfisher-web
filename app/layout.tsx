@@ -20,7 +20,7 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body>
-        <div className="mx-auto flex min-h-screen max-w-4xl flex-col gap-8 overflow-x-hidden px-8">
+        <div className="mx-auto flex min-h-screen max-w-4xl flex-col gap-16 overflow-x-hidden px-8">
           <Header />
 
           <main className="flex flex-1">{children}</main>

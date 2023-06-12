@@ -7,6 +7,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: '*.ctfassets.net',
       },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
     ],
   },
 };

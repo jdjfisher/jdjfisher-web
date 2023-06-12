@@ -4,6 +4,7 @@ import { FaGithub } from 'react-icons/fa';
 import Link from 'next/link';
 import { z } from 'zod';
 import Placeholder from '@/components/Placeholder';
+import Collaborators from '@/components/projects/Collaborators';
 
 export const dynamicParams = false;
 
@@ -41,6 +42,8 @@ export default async function Projec({ params }: Props) {
           )}
         </div>
       </div>
+
+      {project.collaborators && <Collaborators collaborators={project.collaborators} />}
 
       <Placeholder />
     </div>
