@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSelectedLayoutSegment } from 'next/navigation';
 
 const links = {
   '/': 'Home',
@@ -12,6 +12,7 @@ const links = {
 
 export default function Header() {
   const pathname = usePathname();
+  const segment = useSelectedLayoutSegment();
 
   return (
     <header className="relative py-5">
@@ -21,7 +22,7 @@ export default function Header() {
             href={link}
             key={link}
             className={
-              pathname === link
+              link === pathname || link.startsWith(`/${segment}`)
                 ? 'underline decoration-orange-500 decoration-2 underline-offset-8'
                 : ' opacity-60 transition-all duration-500 hover:opacity-100 '
             }
