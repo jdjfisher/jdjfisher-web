@@ -1,4 +1,4 @@
-import RichText from '@/components/RichText';
+import Placeholder from '@/components/Placeholder';
 import { getPost, getPosts } from '@/lib/cms/bindings';
 import dayjs from 'dayjs';
 import Link from 'next/link';
@@ -33,8 +33,7 @@ export default async function Post({ params }: any) {
         </Link>
       </div>
 
-      {/* @ts-ignore */}
-      <RichText text={post.content} />
+      <Placeholder />
     </div>
   );
 }
