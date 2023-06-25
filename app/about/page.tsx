@@ -14,29 +14,29 @@ export default async function About() {
     <div className="space-y-5">
       <h1>About</h1>
 
-      <div className="grid sm:grid-cols-9 gap-y-8 gap-x-12">
-        <div className="col-span-7">
+      <div className="grid gap-x-12 gap-y-8 sm:grid-cols-9">
+        <div className="sm:col-span-7">
           <RichText text={words1} />
         </div>
 
         <Image
           src={`https:${image1.url}`}
           alt="Headshot"
-          width={200}
-          height={200}
-          className="col-span-2 shadow-xl"
+          width={512}
+          height={512}
+          className="shadow-xl sm:col-span-2"
         />
 
-        <div className="col-span-7 sm:order-last">
+        <div className="sm:order-last sm:col-span-7">
           <RichText text={words2} />
         </div>
 
         <Image
           src={`https:${image2.url}`}
           alt="Me"
-          width={200}
-          height={200}
-          className="col-span-2 shadow-xl"
+          width={512}
+          height={512}
+          className="shadow-xl sm:col-span-2"
         />
       </div>
     </div>

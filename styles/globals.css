@@ -19,4 +19,9 @@ p {
   text-align: justify;
 }
 
+a:active,
+a:focus {
+  -webkit-tap-highlight-color: transparent;
+}
+
 @import './animations.css';
