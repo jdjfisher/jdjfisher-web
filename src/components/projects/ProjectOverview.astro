@@ -14,7 +14,7 @@ const { project } = Astro.props;
 <RowLink href={`/projects/${project.title}`}>
   <div class="space-y-4">
     <div class="flex items-center justify-between">
-      <h2>{project.title}</h2>
+      <h2 transition:name={`project-${project.title}`}>{project.title}</h2>
 
       <ProjectStatus project={project} />
     </div>

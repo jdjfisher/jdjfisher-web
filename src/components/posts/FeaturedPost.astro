@@ -12,6 +12,6 @@ const { post } = Astro.props;
 
 <RowLink href={`/posts/${post.slug}`}>
   <span class="text-sm text-gray-500">{dayjs(post.postedAt).format('MMMM Do, YYYY')}</span>
-  <h2 class="text-lg">{post.title}</h2>
+  <h2 class="text-lg" transition:name={`post-${post.title}`}>{post.title}</h2>
   <p class="text-gray-500">{post.description}</p>
 </RowLink>

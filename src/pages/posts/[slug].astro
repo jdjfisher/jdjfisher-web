@@ -21,7 +21,7 @@ const post = await getPost(slug);
 <Layout>
   <div class="w-full space-y-5">
     <div class="items-center justify-between sm:flex">
-      <h1>{post.title}</h1>
+      <h1 transition:name={`post-${post.title}`}>{post.title}</h1>
 
       <div class="whitespace-nowrap">
         {dayjs(post.updatedAt).format('MMMM Do, YYYY')}
