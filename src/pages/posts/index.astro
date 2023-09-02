@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FeaturedPost from '../../components/posts/FeaturedPost';
+import { getPosts } from '../../lib/cms/bindings';
+
+const featured = await getPosts();
+---
+
+<Layout>
+  <div class="space-y-5">
+    <h1>Posts</h1>
+
+    <p>Lorem ipsum dolor sit amet.</p>
+
+    <div class="space-y-10">
+      {featured.map((post) => <FeaturedPost post={post} />)}
+    </div>
+  </div>
+</Layout>

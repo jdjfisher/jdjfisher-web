@@ -1,0 +1,33 @@
+---
+import type { Collaborator } from '../../types';
+import { Image } from 'astro:assets';
+
+export interface Props {
+  collaborators: Collaborator[];
+}
+
+const { collaborators } = Astro.props;
+---
+
+<div class="flex justify-end gap-2">
+  <span class="font-bold">w/</span>
+
+  {
+    collaborators.map((collaborator) => (
+      <a href={collaborator.referenceUrl}>
+        <div class="group flex items-center gap-2">
+          <Image
+            class="rounded-full"
+            src={collaborator.imageUrl}
+            alt={collaborator.handle}
+            width={24}
+            height={24}
+          />
+          <span class="decoration-orange-500 decoration-2 underline-offset-2 group-hover:underline">
+            {collaborator.handle}
+          </span>
+        </div>
+      </a>
+    ))
+  }
+</div>

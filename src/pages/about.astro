@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RichText from '../components/RichText';
+import { getImageAsset, getWords } from '../lib/cms/bindings';
+import { Image } from 'astro:assets';
+
+const [image1, image2, words1, words2] = await Promise.all([
+  getImageAsset('7opaxdbYq6u2RnNBPpu8k6'),
+  getImageAsset('65BaCsRXfrJwxbteN1iYpv'),
+  getWords('about-page-1'),
+  getWords('about-page-2'),
+]);
+---
+
+<Layout>
+  <div class="space-y-5">
+    <h1>About</h1>
+
+    <div class="grid gap-x-12 gap-y-8 sm:grid-cols-9">
+      <div class="sm:col-span-7">
+        <RichText text={words1} />
+      </div>
+
+      <Image
+        src={`https:${image1.url}`}
+        alt="Headshot"
+        width={512}
+        height={512}
+        class="shadow-xl sm:col-span-2"
+      />
+
+      <div class="sm:order-last sm:col-span-7">
+        <RichText text={words2} />
+      </div>
+
+      <Image
+        src={`https:${image2.url}`}
+        alt="Me"
+        width={512}
+        height={512}
+        class="shadow-xl sm:col-span-2"
+      />
+    </div>
+  </div>
+</Layout>

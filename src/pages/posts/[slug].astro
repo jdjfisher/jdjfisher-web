@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Placeholder from '../../components/Placeholder';
+import { getPost, getPosts } from '../../lib/cms/bindings';
+import dayjs from 'dayjs';
+import { z } from 'zod';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+const slug = z.string().parse(Astro.params.slug);
+
+const post = await getPost(slug);
+---
+
+<Layout>
+  <div class="w-full space-y-5">
+    <div class="items-center justify-between sm:flex">
+      <h1>{post.title}</h1>
+
+      <div class="whitespace-nowrap">
+        {dayjs(post.updatedAt).format('MMMM Do, YYYY')}
+      </div>
+    </div>
+
+    <div class="flex justify-items-end">
+      <a href="/posts" class="ml-auto text-gray-500">
+        {'<-'} back
+      </a>
+    </div>
+
+    <Placeholder />
+  </div>
+</Layout>
