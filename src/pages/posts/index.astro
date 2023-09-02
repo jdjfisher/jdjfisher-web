@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import FeaturedPost from '../../components/posts/FeaturedPost';
+import FeaturedPost from '../../components/posts/FeaturedPost.astro';
 import { getPosts } from '../../lib/cms/bindings';
 
 const featured = await getPosts();

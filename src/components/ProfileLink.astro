@@ -1,0 +1,39 @@
+---
+interface Props {
+  href: string;
+  short: string;
+  full: string;
+}
+
+const { href, short, full } = Astro.props;
+---
+
+<code class="relative">
+  <a
+    href={href}
+    class="group peer relative hover:drop-shadow-2xl hover:text-black transition"
+    aria-label={full}
+  >
+    {'<'}
+    {short}
+    {' />'}
+  </a>
+
+  <span
+    class="absolute top-0 -left-4 -z-10 whitespace-nowrap text-xs opacity-0 transition-all peer-hover:-top-5 peer-hover:opacity-40"
+  >
+    {'<'}
+    <span class="text-orange-500">a</span>
+     href=
+    <span class="text-purple-900">{`"${href}"`}</span>
+    {'>'}
+  </span>
+
+  <span
+    class="absolute top-0 -left-4 -z-10 whitespace-nowrap text-xs opacity-0 transition-all peer-hover:top-5 peer-hover:opacity-40"
+  >
+    {'</'}
+    <span class="text-orange-500">a</span>
+    {'>'}
+  </span>
+</code>

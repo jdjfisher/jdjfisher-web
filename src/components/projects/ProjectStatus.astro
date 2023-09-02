@@ -1,0 +1,22 @@
+---
+import type { Project } from '../../types';
+
+interface Props {
+  project: Project;
+}
+
+const statusColours: Record<Project['status'], string> = {
+  active: '#99b88c',
+  closed: '#ddd',
+  paused: '#aaa',
+  prototyping: '#bbb',
+} as const;
+
+const { project } = Astro.props;
+
+const backgroundColor = statusColours[project.status];
+---
+
+<code class="select-none rounded-full px-3 py-1 text-xs shadow-inner" style={{ backgroundColor }}>
+  {project.status}
+</code>
