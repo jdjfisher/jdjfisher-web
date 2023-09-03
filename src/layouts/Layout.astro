@@ -3,6 +3,10 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import '../styles/globals.css';
 import { ViewTransitions } from 'astro:transitions';
+import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+
+dayjs.extend(advancedFormat);
 
 interface Props {
   title?: string;
