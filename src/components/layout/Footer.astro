@@ -1,5 +1,7 @@
 ---
 import ProfileLink from '../ProfileLink.astro';
+
+const year = new Date().getFullYear();
 ---
 
 <footer
@@ -21,7 +23,7 @@ import ProfileLink from '../ProfileLink.astro';
     ^
   </button>
 
-  <span class="text-right">Jordan Fisher © 2023</span>
+  <span class="text-right">Jordan Fisher © {year}</span>
 </footer>
 
 <script>
