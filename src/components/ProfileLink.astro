@@ -11,7 +11,7 @@ const { href, short, full } = Astro.props;
 <code class="relative">
   <a
     href={href}
-    class="group peer relative hover:drop-shadow-2xl hover:text-black transition"
+    class="group peer relative transition hover:text-black hover:drop-shadow-2xl"
     aria-label={full}
   >
     {'<'}
@@ -20,7 +20,7 @@ const { href, short, full } = Astro.props;
   </a>
 
   <span
-    class="absolute top-0 -left-4 -z-10 whitespace-nowrap text-xs opacity-0 transition-all peer-hover:-top-5 peer-hover:opacity-40"
+    class="absolute -left-4 top-0 -z-10 whitespace-nowrap text-xs opacity-0 transition-all peer-hover:-top-5 peer-hover:opacity-40"
   >
     {'<'}
     <span class="text-orange-500">a</span>
@@ -30,7 +30,7 @@ const { href, short, full } = Astro.props;
   </span>
 
   <span
-    class="absolute top-0 -left-4 -z-10 whitespace-nowrap text-xs opacity-0 transition-all peer-hover:top-5 peer-hover:opacity-40"
+    class="absolute -left-4 top-0 -z-10 whitespace-nowrap text-xs opacity-0 transition-all peer-hover:top-5 peer-hover:opacity-40"
   >
     {'</'}
     <span class="text-orange-500">a</span>

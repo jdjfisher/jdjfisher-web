@@ -13,7 +13,7 @@ const active = link === currentPath;
 
 <a
   href={link}
-  class:list={['transition-all duration-500 relative', { 'opacity-60 hover:opacity-100': !active }]}
+  class:list={['relative transition-all duration-500', { 'opacity-60 hover:opacity-100': !active }]}
 >
   {label}
 
@@ -21,7 +21,7 @@ const active = link === currentPath;
     active && (
       <span
         transition:name="active-nav-link"
-        class="absolute left-0 top-6 bg-orange-500 h-[2px] w-full"
+        class="absolute left-0 top-6 h-[2px] w-full bg-orange-500"
       />
     )
   }
