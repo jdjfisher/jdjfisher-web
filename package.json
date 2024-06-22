@@ -10,7 +10,7 @@
     "astro": "astro",
     "typecheck": "astro check && tsc --noEmit",
     "lint": "eslint --ext .astro,.js,.jsx,.ts,.tsx . --ignore-path .gitignore",
-    "format": "prettier --write . --plugin=prettier-plugin-astro"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@astrojs/react": "^3.0.10",
