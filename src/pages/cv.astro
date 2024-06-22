@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <div class="w-full">
+    <h1>CV</h1>
+
+    <p>Download a copy of my CV</p>
+
+    <div class="flex h-full w-full items-center justify-center">
+      <button
+        id="node"
+        type="button"
+        class="fixed flex items-center gap-1 rounded-lg bg-black px-3 py-2 font-semibold text-white shadow-md"
+        tabindex="-1"
+        onclick="alert('404 Not Found')"
+      >
+        Download
+        <span class="material-symbols-outlined"> download </span>
+      </button>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  let xVelocity = 0;
+  let yVelocity = 0;
+  let blockRepelUntil: null | number = null;
+  const deceleration = 0.95;
+  const maxVelocity = 20;
+  const stopVelocity = 0.1;
+  const repelRange = 100;
+  const repelForce = 10;
+  const rate = 1000 / 60;
+
+  document.addEventListener('mousemove', function (event) {
+    if (blockRepelUntil && blockRepelUntil > Date.now()) {
+      return;
+    }
+
+    const node = document.getElementById('node')!;
+    const nodeRect = node.getBoundingClientRect();
+    const nodeCenterX = nodeRect.left + nodeRect.width / 2;
+    const nodeCenterY = nodeRect.top + nodeRect.height / 2;
+
+    // Calculate distance from mouse
+    const distanceX = event.clientX - nodeCenterX;
+    const distanceY = event.clientY - nodeCenterY;
+    const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+    if (distance < repelRange) {
+      // Repel from mouse
+      const angle = Math.atan2(distanceY, distanceX);
+      const displacement = repelForce * (repelRange - distance);
+      xVelocity -= Math.cos(angle) * displacement;
+      yVelocity -= Math.sin(angle) * displacement;
+
+      // Limit velocity
+      const velocity = Math.sqrt(xVelocity * xVelocity + yVelocity * yVelocity);
+
+      if (velocity > maxVelocity) {
+        const ratio = maxVelocity / velocity;
+        xVelocity *= ratio;
+        yVelocity *= ratio;
+      }
+    }
+  });
+
+  setInterval(function () {
+    if (xVelocity === 0 && yVelocity === 0) {
+      return;
+    }
+
+    const node = document.getElementById('node')!;
+    const parentRect = node.parentElement!.getBoundingClientRect();
+    const nodeRect = node.getBoundingClientRect();
+    const nodeX = nodeRect.left;
+    const nodeY = nodeRect.top;
+
+    // Decelerate
+    xVelocity *= deceleration;
+    yVelocity *= deceleration;
+
+    // Stop if slow enough
+    if (Math.abs(xVelocity) < stopVelocity) xVelocity = 0;
+    if (Math.abs(yVelocity) < stopVelocity) yVelocity = 0;
+
+    // Apply velocity
+    let newNodeX = nodeX + xVelocity;
+    let newNodeY = nodeY + yVelocity;
+
+    // Bounce off parent boundaries
+    if (newNodeX < parentRect.left || newNodeX + nodeRect.width > parentRect.right) {
+      xVelocity *= -2;
+      blockRepelUntil = Date.now() + 100;
+    }
+    if (newNodeY < parentRect.top || newNodeY + nodeRect.height > parentRect.bottom) {
+      yVelocity *= -2;
+      blockRepelUntil = Date.now() + 100;
+    }
+
+    // Update position
+    node.style.left = newNodeX + 'px';
+    node.style.top = newNodeY + 'px';
+  }, rate);
+</script>
