@@ -24,6 +24,7 @@ export const projectValidator = z
       status: z.enum(['closed', 'paused', 'prototyping', 'active']),
       content: richTextValidator,
       collaborators: z.array(collaboratorValidator).optional(),
+      order: z.number().int(),
     }),
   })
   .transform((o) => o.fields);

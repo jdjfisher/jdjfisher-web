@@ -19,7 +19,12 @@ export const getPost = async (slug: string) => {
 };
 
 export const getProjects = async () => {
-  const response = await cmsClient.getEntries({ content_type: 'project' });
+  const params = {
+    content_type: 'project',
+    order: 'fields.order',
+  } as const;
+
+  const response = await cmsClient.getEntries(params);
 
   return z.array(projectValidator).parse(response.items);
 };
