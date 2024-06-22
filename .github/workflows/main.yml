@@ -38,4 +38,4 @@ jobs:
         run: npx prettier . --check
 
       - name: Build
-        run: npm run build
+        run: npx astro build --silent
