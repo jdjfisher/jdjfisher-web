@@ -1,4 +1,4 @@
-import contentful from 'contentful';
+import * as contentful from 'contentful';
 
 const space = import.meta.env.CONTENTFUL_SPACE_ID;
 const accessToken = import.meta.env.CONTENTFUL_ACCESS_TOKEN;
