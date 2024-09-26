@@ -19,7 +19,7 @@ const { project } = Astro.props;
       <ProjectStatus project={project} />
     </div>
 
-    {/* @ts-ignore */}
-    <RichText text={project.content} />
+    <!-- @ts-ignore -->
+    <RichText text={project.description} />
   </div>
 </RowLink>

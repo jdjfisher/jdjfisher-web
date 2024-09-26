@@ -4,6 +4,7 @@ import { getProject, getProjects } from '../../lib/cms/bindings';
 import { z } from 'zod';
 import Placeholder from '../../components/Placeholder.astro';
 import Collaborators from '../../components/projects/Collaborators.astro';
+import RichText from '../../components/RichText';
 
 export async function getStaticPaths() {
   const projects = await getProjects();
@@ -34,6 +35,7 @@ const project = await getProject(title);
 
     {project.collaborators && <Collaborators collaborators={project.collaborators} />}
 
-    <Placeholder />
+    <!-- @ts-ignore -->
+    {project.content ? <RichText text={project.content} /> : <Placeholder />}
   </div>
 </Layout>

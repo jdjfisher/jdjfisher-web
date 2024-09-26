@@ -22,9 +22,10 @@ export const projectValidator = z
       title: z.string(),
       repositoryUrl: z.string().optional(),
       status: z.enum(['closed', 'paused', 'prototyping', 'active']),
-      content: richTextValidator,
       collaborators: z.array(collaboratorValidator).optional(),
       order: z.number().int(),
+      description: richTextValidator,
+      content: richTextValidator.optional(),
     }),
   })
   .transform((o) => o.fields);
