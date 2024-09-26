@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "typecheck": "astro check && tsc --noEmit",
-    "lint": "eslint --ext .astro,.js,.jsx,.ts,.tsx . --ignore-path .gitignore",
+    "lint": "eslint",
     "format": "prettier --write ."
   },
   "dependencies": {
