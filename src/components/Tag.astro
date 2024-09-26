@@ -1,0 +1,15 @@
+---
+interface Props {
+  text: string;
+  colour: string;
+}
+
+const { text, colour } = Astro.props;
+---
+
+<code
+  class="select-none rounded-full px-3 py-1 text-xs shadow-inner"
+  style={{ backgroundColor: colour }}
+>
+  {text}
+</code>

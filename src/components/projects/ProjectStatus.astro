@@ -1,5 +1,6 @@
 ---
 import type { Project } from '../../types';
+import Tag from '../Tag.astro';
 
 interface Props {
   project: Project;
@@ -14,9 +15,7 @@ const statusColours: Record<Project['status'], string> = {
 
 const { project } = Astro.props;
 
-const backgroundColor = statusColours[project.status];
+const colour = statusColours[project.status];
 ---
 
-<code class="select-none rounded-full px-3 py-1 text-xs shadow-inner" style={{ backgroundColor }}>
-  {project.status}
-</code>
+<Tag colour={colour} text={project.status} />
