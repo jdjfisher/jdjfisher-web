@@ -1,14 +1,13 @@
 import { documentToReactComponents, type Options } from '@contentful/rich-text-react-renderer';
 import { type Document, BLOCKS } from '@contentful/rich-text-types';
-import { Image } from 'astro:assets';
 
 const options: Options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const file = node.data.target.file;
+      const file = node.data.target.fields.file;
 
       return (
-        <Image
+        <img
           src={`https://${file.url}`}
           height={file.details.image.height}
           width={file.details.image.width}
