@@ -1,9 +1,8 @@
 ---
-import RootLayout from '../../layouts/RootLayout.astro';
+import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
 import { getProject, getProjects } from '../../lib/cms/bindings';
 import { z } from 'zod';
 import Placeholder from '../../components/Placeholder.astro';
-import Collaborators from '../../components/projects/Collaborators.astro';
 import RichText from '../../components/RichText';
 
 export async function getStaticPaths() {
@@ -19,23 +18,7 @@ const title = z.string().parse(Astro.params.title);
 const project = await getProject(title);
 ---
 
-<RootLayout>
-  <div class="w-full space-y-10">
-    <div class="items-center justify-between sm:flex">
-      <h1 transition:name={`project-${project.title}`}>{project.title}</h1>
-
-      <div class="flex justify-items-end gap-4">
-        <a href="/projects" class="text-gray-500">
-          {'<-'} back
-        </a>
-
-        {project.repositoryUrl && <a href={project.repositoryUrl}>GitHub</a>}
-      </div>
-    </div>
-
-    {project.collaborators && <Collaborators collaborators={project.collaborators} />}
-
-    <!-- @ts-ignore -->
-    {project.content ? <RichText text={project.content} /> : <Placeholder />}
-  </div>
-</RootLayout>
+<ProjectPageLayout project={project}>
+  <!-- @ts-ignore -->
+  {project.content ? <RichText text={project.content} /> : <Placeholder />}
+</ProjectPageLayout>

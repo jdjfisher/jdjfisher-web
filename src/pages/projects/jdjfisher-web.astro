@@ -1,0 +1,8 @@
+---
+import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
+import { getProject } from '../../lib/cms/bindings';
+
+const project = await getProject('jdjfisher-web');
+---
+
+<ProjectPageLayout project={project}> . </ProjectPageLayout>

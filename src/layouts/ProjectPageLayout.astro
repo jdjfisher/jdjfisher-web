@@ -1,0 +1,33 @@
+---
+import RootLayout from './RootLayout.astro';
+import Collaborators from '../components/projects/Collaborators.astro';
+import type { Project } from '../types';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<RootLayout>
+  <div class="w-full space-y-10">
+    <div class="items-center justify-between sm:flex">
+      <h1 transition:name={`project-${project.title}`}>{project.title}</h1>
+
+      <div class="flex justify-items-end gap-4">
+        <a href="/projects" class="text-gray-500">
+          {'<-'} back
+        </a>
+
+        {project.repositoryUrl && <a href={project.repositoryUrl}>GitHub</a>}
+      </div>
+    </div>
+
+    {project.collaborators && <Collaborators collaborators={project.collaborators} />}
+
+    <div>
+      <slot />
+    </div>
+  </div>
+</RootLayout>
