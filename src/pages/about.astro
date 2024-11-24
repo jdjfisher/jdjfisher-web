@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import RootLayout from '../layouts/RootLayout.astro';
 import RichText from '../components/RichText';
 import { getImageAsset, getWords } from '../lib/cms/bindings';
 import { Image } from 'astro:assets';
@@ -12,7 +12,7 @@ const [image1, image2, words1, words2] = await Promise.all([
 ]);
 ---
 
-<Layout>
+<RootLayout>
   <div class="space-y-5">
     <h1>About</h1>
 
@@ -42,4 +42,4 @@ const [image1, image2, words1, words2] = await Promise.all([
       />
     </div>
   </div>
-</Layout>
+</RootLayout>

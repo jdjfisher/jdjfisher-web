@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import RootLayout from '../../layouts/RootLayout.astro';
 import { getProject, getProjects } from '../../lib/cms/bindings';
 import { z } from 'zod';
 import Placeholder from '../../components/Placeholder.astro';
@@ -19,7 +19,7 @@ const title = z.string().parse(Astro.params.title);
 const project = await getProject(title);
 ---
 
-<Layout>
+<RootLayout>
   <div class="w-full space-y-10">
     <div class="items-center justify-between sm:flex">
       <h1 transition:name={`project-${project.title}`}>{project.title}</h1>
@@ -38,4 +38,4 @@ const project = await getProject(title);
     <!-- @ts-ignore -->
     {project.content ? <RichText text={project.content} /> : <Placeholder />}
   </div>
-</Layout>
+</RootLayout>

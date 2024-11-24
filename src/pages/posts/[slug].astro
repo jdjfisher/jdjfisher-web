@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import RootLayout from '../../layouts/RootLayout.astro';
 import Placeholder from '../../components/Placeholder.astro';
 import { getPost, getPosts } from '../../lib/cms/bindings';
 import dayjs from 'dayjs';
@@ -18,7 +18,7 @@ const slug = z.string().parse(Astro.params.slug);
 const post = await getPost(slug);
 ---
 
-<Layout>
+<RootLayout>
   <div class="w-full space-y-5">
     <div class="items-center justify-between sm:flex">
       <h1 transition:name={`post-${post.title}`}>{post.title}</h1>
@@ -36,4 +36,4 @@ const post = await getPost(slug);
 
     <Placeholder />
   </div>
-</Layout>
+</RootLayout>

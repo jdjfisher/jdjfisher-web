@@ -1,12 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import RootLayout from '../../layouts/RootLayout.astro';
 import ProjectOverview from '../../components/projects/ProjectOverview.astro';
 import { getProjects } from '../../lib/cms/bindings';
 
 const projects = await getProjects();
 ---
 
-<Layout>
+<RootLayout>
   <div class="space-y-5">
     <h1>Projects</h1>
 
@@ -16,4 +16,4 @@ const projects = await getProjects();
       {projects.map((project) => <ProjectOverview project={project} />)}
     </div>
   </div>
-</Layout>
+</RootLayout>
