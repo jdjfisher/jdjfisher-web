@@ -7,6 +7,6 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [tailwind({ applyBaseStyles: false }), react()],
   image: {
-    domains: ['images.ctfassets.net']
-  }
+    domains: ['images.ctfassets.net'],
+  },
 });
