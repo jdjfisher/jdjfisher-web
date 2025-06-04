@@ -11,13 +11,12 @@ const bio = fs.readFileSync('./src/content/bio.md', 'utf-8');
   <div class="space-y-5">
     <h1>About</h1>
 
-    <div class="flex gap-y-8 gap-x-16">
+    <div class="flex gap-x-16 gap-y-8">
       <p>
         {bio}
       </p>
 
       <Image src={headshot} alt="Headshot" width={200} height={200} class="shadow-xl" />
     </div>
-
   </div>
 </RootLayout>
