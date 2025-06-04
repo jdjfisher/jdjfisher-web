@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { projectValidator, collaboratorValidator } from './lib/cms/validators';
+import { projectValidator, collaboratorValidator } from './lib/validators';
 
 export type Project = z.infer<typeof projectValidator>;
 

@@ -6,29 +6,22 @@ export const richTextValidator = z.object({
   data: z.record(z.string(), z.any()),
 });
 
-export const collaboratorValidator = z
-  .object({
-    fields: z.object({
-      handle: z.string(),
-      referenceUrl: z.string().url(),
-      imageUrl: z.string().url(),
-    }),
-  })
-  .transform((f) => f.fields);
+export const collaboratorValidator = z.object({
+  handle: z.string(),
+  referenceUrl: z.string().url(),
+  imageUrl: z.string().url(),
+});
 
-export const projectValidator = z
-  .object({
-    fields: z.object({
-      title: z.string(),
-      repositoryUrl: z.string().optional(),
-      status: z.enum(['closed', 'paused', 'prototyping', 'active']),
-      collaborators: z.array(collaboratorValidator).optional(),
-      order: z.number().int(),
-      description: richTextValidator,
-      content: richTextValidator.optional(),
-    }),
-  })
-  .transform((o) => o.fields);
+export const projectValidator = z.object({
+  title: z.string(),
+  slug: z.string(),
+  repositoryUrl: z.string().optional(),
+  status: z.enum(['closed', 'paused', 'prototyping', 'active']),
+  collaborators: z.array(collaboratorValidator).optional(),
+  order: z.number().int(),
+  description: richTextValidator,
+  content: richTextValidator.optional(),
+});
 
 export const wordsValidator = z
   .object({

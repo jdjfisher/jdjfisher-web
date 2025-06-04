@@ -1,24 +1,25 @@
 ---
 import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
-import { getProject, getProjects } from '../../lib/cms/bindings';
 import { z } from 'zod';
 import Placeholder from '../../components/Placeholder.astro';
 import RichText from '../../components/RichText';
+import { getCollection } from 'astro:content';
+import { getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
-  const projects = await getProjects();
+  const projects = await getCollection('projects');
 
   return projects.map((project) => ({
-    params: { title: project.title },
+    params: { slug: project.id },
   }));
 }
 
-const title = z.string().parse(Astro.params.title);
+const slug = z.string().parse(Astro.params.slug);
 
-const project = await getProject(title);
+const project = await getEntry('projects', slug)!;
 ---
 
-<ProjectPageLayout project={project}>
+<ProjectPageLayout project={project.data}>
   <!-- @ts-ignore -->
   {project.content ? <RichText text={project.content} /> : <Placeholder />}
 </ProjectPageLayout>

@@ -1,9 +1,9 @@
 ---
 import RootLayout from '../../layouts/RootLayout.astro';
 import ProjectOverview from '../../components/projects/ProjectOverview.astro';
-import { getProjects } from '../../lib/cms/bindings';
+import { getCollection } from 'astro:content';
 
-const projects = await getProjects();
+const projects = await getCollection('projects');
 ---
 
 <RootLayout>
@@ -13,7 +13,7 @@ const projects = await getProjects();
     <p>Here are some of the projects I've worked on. Click on a project to learn more about it.</p>
 
     <div class="space-y-10">
-      {projects.map((project) => <ProjectOverview project={project} />)}
+      {projects.map((project) => <ProjectOverview project={project.data} />)}
     </div>
   </div>
 </RootLayout>

@@ -13,7 +13,7 @@ const { project } = Astro.props;
 <RootLayout>
   <div class="w-full space-y-10">
     <div class="items-center justify-between sm:flex">
-      <h1 transition:name={`project-${project.title}`}>{project.title}</h1>
+      <h1 transition:name={`project-${project.slug}`}>{project.title}</h1>
 
       <div class="flex justify-items-end gap-4">
         <a href="/projects" class="text-gray-500">
