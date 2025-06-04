@@ -38,19 +38,6 @@ export const wordsValidator = z
   })
   .transform((o) => o.fields);
 
-export const postValidator = z
-  .object({
-    fields: z.object({
-      title: z.string(),
-      slug: z.string(),
-      description: z.string(),
-      content: richTextValidator,
-      postedAt: z.coerce.date().transform((d) => d.toISOString()),
-      updatedAt: z.coerce.date().transform((d) => d.toISOString()),
-    }),
-  })
-  .transform((o) => o.fields);
-
 export const assetValidator = z
   .object({
     fields: z.object({
@@ -66,16 +53,3 @@ export const assetValidator = z
     }),
   })
   .transform((o) => o.fields);
-
-export const imageFileValidator = z.object({
-  fileName: z.string(),
-  contentType: z.string(),
-  url: z.string(),
-  details: z.object({
-    size: z.number().positive(),
-    image: z.object({
-      width: z.number().positive(),
-      height: z.number().positive(),
-    }),
-  }),
-});

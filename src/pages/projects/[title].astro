@@ -8,8 +8,8 @@ import RichText from '../../components/RichText';
 export async function getStaticPaths() {
   const projects = await getProjects();
 
-  return projects.map((post) => ({
-    params: { title: post.title },
+  return projects.map((project) => ({
+    params: { title: project.title },
   }));
 }
 
