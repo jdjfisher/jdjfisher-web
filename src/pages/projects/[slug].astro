@@ -2,7 +2,6 @@
 import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
 import { z } from 'zod';
 import Placeholder from '../../components/Placeholder.astro';
-import RichText from '../../components/RichText';
 import { getCollection } from 'astro:content';
 import { getEntry } from 'astro:content';
 
@@ -17,9 +16,17 @@ export async function getStaticPaths() {
 const slug = z.string().parse(Astro.params.slug);
 
 const project = await getEntry('projects', slug)!;
+
+let ProjectComponent: any = null;
+
+try {
+  const module = await import(`../../content/projects/${slug}/page.astro`);
+  ProjectComponent = module.default;
+} catch (error) {
+  process.stdout.write(` no custom component for ${slug}`);
+}
 ---
 
 <ProjectPageLayout project={project.data}>
-  <!-- @ts-ignore -->
-  {project.content ? <RichText text={project.content} /> : <Placeholder />}
+  {ProjectComponent ? <ProjectComponent /> : <Placeholder />}
 </ProjectPageLayout>

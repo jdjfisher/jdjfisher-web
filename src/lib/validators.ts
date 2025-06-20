@@ -20,7 +20,6 @@ export const projectValidator = z.object({
   collaborators: z.array(collaboratorValidator).optional(),
   order: z.number().int(),
   description: richTextValidator,
-  content: richTextValidator.optional(),
 });
 
 export const wordsValidator = z
