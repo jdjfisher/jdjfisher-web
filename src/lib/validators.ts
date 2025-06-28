@@ -16,6 +16,7 @@ export const projectValidator = z.object({
   title: z.string(),
   slug: z.string(),
   repositoryUrl: z.string().optional(),
+  draft: z.boolean().optional().default(false),
   status: z.enum(['closed', 'paused', 'prototyping', 'active']),
   collaborators: z.array(collaboratorValidator).optional(),
   order: z.number().int(),

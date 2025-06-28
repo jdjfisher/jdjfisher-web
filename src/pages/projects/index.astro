@@ -3,7 +3,7 @@ import RootLayout from '../../layouts/RootLayout.astro';
 import ProjectOverview from '../../components/projects/ProjectOverview.astro';
 import { getCollection } from 'astro:content';
 
-const projects = await getCollection('projects');
+const projects = await getCollection('projects', ({ data }) => !data.draft);
 ---
 
 <RootLayout>

@@ -1,8 +1,0 @@
----
-import { getEntry } from 'astro:content';
-import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
-
-const project = await getEntry('projects', 'jdjfisher-web')!;
----
-
-<ProjectPageLayout project={project.data}> . </ProjectPageLayout>
