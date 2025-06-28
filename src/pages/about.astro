@@ -1,7 +1,7 @@
 ---
 import RootLayout from '../layouts/RootLayout.astro';
 import { Image } from 'astro:assets';
-import headshot from '../content/assets/headshot.jpg';
+import headshot from '../content/assets/headshot.jpeg';
 import fs from 'fs';
 
 const bio = fs.readFileSync('./src/content/bio.md', 'utf-8');
@@ -11,12 +11,14 @@ const bio = fs.readFileSync('./src/content/bio.md', 'utf-8');
   <div class="space-y-5">
     <h1>About</h1>
 
-    <div class="flex gap-x-16 gap-y-8">
+    <div class="flex gap-x-16 gap-y-8 max-md:flex-col">
       <p>
         {bio}
       </p>
 
-      <Image src={headshot} alt="Headshot" width={200} height={200} class="shadow-xl" />
+      <div>
+        <Image src={headshot} alt="Headshot" width={1000} height={1000} class="shadow-xl" />
+      </div>
     </div>
   </div>
 </RootLayout>
