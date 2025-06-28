@@ -4,6 +4,7 @@ import { z } from 'zod';
 import Placeholder from '../../components/Placeholder.astro';
 import { getCollection } from 'astro:content';
 import { getEntry } from 'astro:content';
+import fs from 'fs';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -19,11 +20,14 @@ const project = await getEntry('projects', slug)!;
 
 let ProjectComponent: any = null;
 
-try {
+const pageAstroPath = new URL(`../../content/projects/${slug}/page.astro`, import.meta.url)
+  .pathname;
+
+if (fs.existsSync(pageAstroPath)) {
   const module = await import(`../../content/projects/${slug}/page.astro`);
   ProjectComponent = module.default;
-} catch (error) {
-  process.stdout.write(` no custom component for ${slug}`);
+} else {
+  console.warn(`Project page for ${slug} does not exist at ${pageAstroPath}`);
 }
 ---
 
