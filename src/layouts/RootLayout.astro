@@ -5,6 +5,7 @@ import '../styles/globals.css';
 import { ClientRouter } from 'astro:transitions';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import WipToast from '../components/WipToast.astro';
 
 dayjs.extend(advancedFormat);
 
@@ -30,7 +31,9 @@ const title = Astro.props.title ?? 'jdjfisher';
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class="w-screen overflow-x-hidden">
+  <body class="relative w-screen overflow-x-hidden">
+    <WipToast />
+
     <div class="mx-auto flex min-h-screen max-w-4xl flex-col gap-16 px-8">
       <Header />
 
