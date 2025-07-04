@@ -1,14 +1,16 @@
 ---
 import type { Project } from '../../types';
-import RichText from '../RichText';
 import ProjectStatus from './ProjectStatus.astro';
 import RowLink from '../layout/RowLink.astro';
+import { marked } from 'marked';
 
 interface Props {
   project: Project;
 }
 
 const { project } = Astro.props;
+
+const markdown = marked.parse(project.description);
 ---
 
 <RowLink href={`/projects/${project.slug}`}>
@@ -19,7 +21,6 @@ const { project } = Astro.props;
       <ProjectStatus project={project} />
     </div>
 
-    <!-- @ts-ignore -->
-    <RichText text={project.description} />
+    <p set:html={markdown} />
   </div>
 </RowLink>
