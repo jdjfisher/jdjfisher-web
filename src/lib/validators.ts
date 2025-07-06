@@ -16,3 +16,10 @@ export const projectValidator = z.object({
   order: z.number().int(),
   description: z.string(),
 });
+
+export const mediaValidator = z.object({
+  title: z.string(),
+  verb: z.string(),
+  websiteUrl: z.string().url(),
+  imageUrl: z.string().url(),
+});

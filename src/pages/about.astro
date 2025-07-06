@@ -3,15 +3,18 @@ import RootLayout from '../layouts/RootLayout.astro';
 import { Image } from 'astro:assets';
 import headshot from '../content/assets/headshot.jpeg';
 import fs from 'fs';
+import { getCollection } from 'astro:content';
+import MediaCard from '../components/MediaCard.astro';
 
 const bio = fs.readFileSync('./src/content/bio.md', 'utf-8');
+const media = await getCollection('media');
 ---
 
 <RootLayout>
   <div>
     <h1 class="mb-5">About</h1>
 
-    <div class="flex gap-x-16 gap-y-8 max-md:flex-col">
+    <div class="mb-18 flex gap-x-16 gap-y-8 max-md:flex-col">
       <p>
         {bio}
       </p>
@@ -19,6 +22,10 @@ const bio = fs.readFileSync('./src/content/bio.md', 'utf-8');
       <div>
         <Image src={headshot} alt="Headshot" width={1000} height={1000} class="shadow-xl" />
       </div>
+    </div>
+
+    <div class="space-y-4">
+      {media.map((item) => <MediaCard media={item.data} />)}
     </div>
   </div>
 </RootLayout>

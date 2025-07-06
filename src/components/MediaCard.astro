@@ -1,0 +1,27 @@
+---
+import type { Media } from '../types';
+
+interface Props {
+  media: Media;
+}
+
+const { media } = Astro.props;
+---
+
+<a
+  class="flex max-w-lg items-center justify-between rounded-lg bg-gray-50 px-6 py-4 shadow-md transition-colors hover:bg-gray-100 hover:shadow-lg"
+  href={media.websiteUrl}
+  target="_blank"
+>
+  <div>
+    <span class="font-semibold text-gray-700">
+      {media.verb}
+    </span>
+
+    <p class="text-sm text-gray-600">
+      {media.title}
+    </p>
+  </div>
+
+  <img src={media.imageUrl} alt="img" class="h-16 w-16 rounded-lg object-cover shadow-sm" />
+</a>
