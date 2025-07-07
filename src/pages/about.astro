@@ -1,7 +1,8 @@
 ---
 import RootLayout from '../layouts/RootLayout.astro';
 import { Image } from 'astro:assets';
-import headshot from '../content/assets/headshot.jpeg';
+import me1 from '../content/assets/me_1.jpeg';
+import me2 from '../content/assets/me_2.jpeg';
 import fs from 'fs';
 import { getCollection } from 'astro:content';
 import MediaCard from '../components/MediaCard.astro';
@@ -19,8 +20,31 @@ const media = await getCollection('media');
         {bio}
       </p>
 
-      <div>
-        <Image src={headshot} alt="Headshot" width={1000} height={1000} class="shadow-xl" />
+      <div class="group relative">
+        <Image
+          src={me2}
+          alt="Me 2"
+          loading="lazy"
+          width={1000}
+          height={1000}
+          class="absolute top-5 left-5 -z-10 shadow-xl blur-sm transition-all duration-500 group-hover:blur-none"
+        />
+        <Image
+          src={me1}
+          loading="eager"
+          alt="Me 1"
+          width={1000}
+          height={1000}
+          class="shadow-xl transition-all duration-500 group-hover:opacity-0 group-hover:blur-sm"
+        />
+        <Image
+          src={me1}
+          alt="Me 1"
+          loading="lazy"
+          width={1000}
+          height={1000}
+          class="absolute top-0 left-0 -z-20 shadow-xl blur-sm"
+        />
       </div>
     </div>
 
